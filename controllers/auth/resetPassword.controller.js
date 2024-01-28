@@ -83,6 +83,7 @@ module.exports = {
                         }
                     )
                     req.flash("msg", "Đặt lại mật khẩu thành công!");
+                    req.flash("old", { email: req.session.historySendMailData?.email });
                     return res.redirect(`/auth/login`);
                 }
                 req.flash("error", "Đã xảy ra lỗi, vui lòng thử lại sau ít phút!");
