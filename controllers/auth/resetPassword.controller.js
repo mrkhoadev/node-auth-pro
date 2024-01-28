@@ -72,7 +72,7 @@ module.exports = {
                     }
                 );
                 if (result) {
-                    await HistorySendMail.update(
+                    const update = await HistorySendMail.update(
                         {
                             token_expiration: new Date()
                         },
@@ -83,7 +83,7 @@ module.exports = {
                         }
                     )
                     req.flash("msg", "Đặt lại mật khẩu thành công!");
-                    req.flash("old", { email: req.session.historySendMailData?.email });
+                    req.flash("old", { email: update?.email });
                     return res.redirect(`/auth/login`);
                 }
                 req.flash("error", "Đã xảy ra lỗi, vui lòng thử lại sau ít phút!");

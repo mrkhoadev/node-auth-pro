@@ -17,7 +17,6 @@ const { User } = require("./models/index");
 const localPassport = require("./passports/local.passport");
 const authMiddleware = require('./middlewares/auth.middleware');
 const googlePassport = require('./passports/google.passport');
-const indexMiddleware = require('./middlewares/index.middleware');
 
 var app = express();
 app.use(session({
@@ -76,7 +75,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressEjsLayout);
 
-app.use(indexMiddleware);
 app.use(validateMiddleware);
 app.use('/auth', authRouter);
 app.use(authMiddleware);
